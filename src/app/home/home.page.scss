@@ -1,0 +1,545 @@
+// Ionic Toolsbar
+
+  ion-toolbar {
+    --ion-toolbar-background: #27343e !important;
+    color: white !important;
+
+    #title {
+      display: flex;
+      flex-direction: row;
+      flex-basis: 100%;
+      font-size: 15px;
+      padding: 0px;
+    }
+    
+    #titleName {
+      display: flex;
+      flex-basis: 100%;
+      justify-content: flex-start;
+      align-items: flex-end;
+      padding: 0px 10px;
+    }
+    
+  }
+
+  ion-icon {
+    .menuSharp {
+      background-color: #eeeeee;
+    }
+  }
+
+  ion-fab {
+    color: #ffffff;
+  }
+
+// Containers 1, 2, 3 and 4
+
+// Magenta border
+.container_1 {
+  // flexbox atrributes
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: center;
+
+  //other class attributes
+  height: 95%;
+  width: 100%;
+  padding: 5px;
+
+  // Border (for editing)
+  // border: 5px solid magenta;
+}
+
+// Green border
+.container_2 {
+  // flexbox attributes
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+  align-items: flex-start;
+  justify-content: center;
+
+  // other class attributes
+  height: 7%;
+  width: 100%;
+  margin: 0px 10px 0px 10px;
+  font-family:Arial, Helvetica, sans-serif;
+
+  // Border (for editing)
+  // border: 5px solid rgb(62, 209, 84);
+}
+
+// Blue border
+.container_3 {
+  // flexbox attributes
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  // other class attributes
+  height: 14%;
+  width: 50%;
+  padding: 10px 10px 10px 20px;
+
+  // Border (for editing)
+  // border: 5px solid blue;
+}
+
+// Orange border
+.container_4 {
+  // flexbox attributes
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items:stretch;
+  justify-content: center;
+
+  //other class attributes
+  min-height: 65%;
+  width: 100%;
+
+  // Border (for editing)
+  // border: 5px solid orange;
+}
+
+.searchbarContainer {
+  // flexbox attributes
+  display: flex;
+  flex-direction: column;
+
+  // other class attributes
+  height: 7%;
+  width: 100%;
+  // margin: 5px;
+}
+
+// .hrContainer {
+//   // flexbox attributes
+//   display: flex;
+//   flex-direction: column;
+//   align-content: flex-start;
+//   align-items:stretch;
+//   justify-content: center;
+
+//   // other class attributes
+//   height: 100%;
+//   margin: 5px;
+// }
+
+.line {
+  // flexbox attributes
+  // flexbox attributes
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+
+  // other class attributes
+  height: 1px;
+  width: 100%;
+  margin: 12px 0px 8px 0px;
+  background-color: black;
+
+  // border
+  // border: 1px solid black;
+}
+
+// Yellow border
+.fabContainer {
+  // flexbox attributes
+  display: flex;
+  flex-direction: row;
+  align-content: flex-end;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  // other class attributes
+  height: 10%;
+  width: 29%;
+
+  // Border (for editing)
+  // border: solid yellow;
+}
+
+// As it is organized in home.page.html
+
+// Inside Container_1 --------------------------
+
+  #container_1 strong {
+    font-size: 15px;
+    line-height: 15px;
+  }
+
+  #container_1 p {
+    color: #8c8c8c;
+    margin: 0;
+  }
+  
+  #container_1 a {
+    text-decoration: none;
+  }
+
+  // Inside Container_2 ------------------------
+
+    // antigo projectBasicInfo img
+      .container_2 img {
+        height: 45px;
+        width: 45px;
+        border-radius: 30%;
+        margin: 0px 10px 0px 0px;
+      }
+
+      //antigo projectNameAndCompany
+      .nameAndCompanyContainer {
+        // flexbox attributes
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+        text-align: left;
+
+        //other class attributes
+        height: 100%;
+        width: 100%;
+        font-family:Arial, Helvetica, sans-serif !important;
+      }                               
+
+        // Inside nameAndCompanyContainer ------------
+
+          // antigo projectName
+          .projectNameContainer {
+            display: flex;
+            align-items: flex-start;
+            font-size: 15px;
+            font-weight: bolder;
+          }
+
+          .companyNameContainer {
+            display: flex;
+            align-items: flex-start;
+            font-size: 12px;
+            color: #8c8c8c;
+            margin-top: 5px;
+          }
+  
+  // <hr>
+  
+        // hr {
+        //   border: 1px;
+        //   clear:both;
+        //   display:block;
+        //   width: 95%;               
+        //   background-color: #27343e;
+        //   height: 1px;
+        //   padding: 1px;
+        // }
+          
+  // Inside Container_3 --------------------
+    
+    // antigo dataColumnsItems
+    .items {
+      // flexbox attributes
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+
+
+      // other class attributes
+      height: 20%;
+      width: 100%;
+
+        ion-icon {
+          font-size: 12px;
+        }
+
+        img {
+          max-width: 17px;
+          max-height: 17px;
+        }
+    }
+    
+      // Inside Items
+
+      .items p {
+        font-size: 8px;
+        width: 100%;
+      }
+
+      // antigo entity-name
+      .itemsName {
+        margin-left: 10px;
+        font-size: 10px;
+        white-space: nowrap;
+      }
+  
+  // <ion-searchbar></ion-searchbar>
+
+  // Inside Container_4 --------------------
+
+    .options {
+      // flexbox attributes
+      display: flex;
+      flex-direction: column;
+      // flex-basis: 100%;
+      align-content: flex-start;
+      align-items: stretch;
+      justify-content: flex-start;
+      text-align: start;
+    
+      // other class attributes
+      padding: 0px 10px 0px 10px;  
+      height: 100%;
+    }
+
+    
+// Ionic css ------------------------------------
+
+ion-item {
+  --color: #eeeeee;
+  margin-top: 8px;
+  // height: 28px;
+  --border-radius: 3px;
+  --inner-padding-end: 3px;
+}
+
+ion-searchbar {
+  // background-color: rgb(255, 145, 0);
+  padding: 2px 6px!important;
+  border: 2px;
+  border-color: black; 
+}
+
+ion-item {
+  height: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+
+  ion-label {
+    display: flex;
+    flex-direction: column;
+    font-size: 11px;
+  }
+
+  .metadata-end-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+}
+
+ion-title {
+  padding: 5px;
+}
+
+ion-item .item.inner {
+  div {
+    padding: 0px 0px 0px 20px;
+  }
+}    
+
+ion-row {
+  .ionRowContainer {
+    // flexbox attributes
+  display: flex;
+  flex-direction: row;
+  align-content: flex-end;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  // other class attributes
+  height: 100%;
+  width: 40%;
+  
+  // Border(for editing)
+  // border: solid purple;
+  }
+}
+
+ion-footer {
+  // flexbox attributes
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: center;
+  // other class attributes
+  height: 0%;
+  width: 100%;
+
+  // Border(for editing)
+  // border: 3px solid blueviolet
+} 
+
+  // Ion-fab-buttons
+    
+    ion-row {
+      // flexbox attributes
+      display: flex;
+      flex-direction: row;
+      align-content: flex-end;
+
+      // other class attributes
+      // border: 2px solid violet;
+    }
+
+
+    // .syncButton {
+
+    //   border: 2px solid magenta;
+
+    // }
+
+    .addButton {
+
+      .native-button {
+        height: 80%;
+        width: 80%;
+      }
+
+    }
+
+    .label {
+      // flexbox attributes
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+
+      // other class attributes
+      border-radius: 5px;
+      height: 25px;
+      width: 50px;
+      background-color: #ff8801;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+
+      // border: 2px solid red;
+    }
+
+    .button1 {
+      border: 2px solid blue;
+    }
+
+    // .greenGrid {
+    //   // border: 3px solid yellowgreen;
+    // }
+
+    .pinkRow {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      
+      // border: 3px solid pink;
+    }
+
+    .labelButtonContainer {
+      // flexbox attributes
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      align-content: stretch;
+      justify-content: start;
+      flex-wrap: wrap;
+    }
+
+    .fabRow {
+      //  // flexbox attributes
+      display: flex !important;
+      flex-direction: row !important;
+      justify-content: center !important;
+      align-items: center !important;
+      align-content: center !important;
+  
+      height: 15px;
+      margin: 20px;
+    }
+
+  
+    .fabCol {
+      //  // flexbox attributes
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      align-items: center !important;
+      align-content: center !important;
+
+      //  // other class attributes
+      //  position: absolute !important;
+      //  right: -10px !important;
+
+      position: absolute !important;
+      bottom: -4px !important;
+      right: 0px !important;
+    }
+    
+    
+.hello {
+    // flexbox attributes
+    display: flex !important;
+    // flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    align-content: center !important;
+    flex-wrap: nowrap;
+
+    // other class attributes
+    height: 25px;
+    width: max-content;
+    border-radius: 4px;
+    background-color: #ff8801 !important;
+    color: white;
+    position: absolute !important;
+    right: 60px !important;
+    top: 30px !important;
+    font-size: 15px;
+    padding: 5px;
+}
+
+// Globals ----------------------------------------------------------------------------------
+
+// ion-searchbar .searchbar-input{
+//   padding: 3px !important;
+//   height: 35px !important;
+// }
+
+// ion-searchbar {
+
+//   .searchbar-input-container {
+
+//       input {
+//           font-size: 11px !important;
+//           text-align: left !important;
+//           padding-top: 8px !important;
+//           padding-right: 0px;
+//           padding-bottom: 3px !important;
+//           padding-left: 39px !important;
+//           box-shadow: 0px 0px 0px 1px !important;
+//           background-color: #ffffff !important;
+//       }
+
+//       ion-icon {
+//           height: 18px !important;
+//           width: 18px !important;
+//           padding-bottom: 3px !important;
+//       }
+//   }
+// }
+
+// .picker-prefix, .picker-suffix, .picker-opt.picker-opt-selected {
+//   color: #79d382 !important;
+// }
+
+// ion-col {
+//   border: 1px solid green;
+//   margin: 0px;
+// }

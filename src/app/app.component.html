@@ -1,0 +1,128 @@
+<ion-app>
+  <ion-menu [ngClass]="this.checkIfSideMenuIsFolded() ? 'folded' : 'unfolded' " contentId="main-content">
+    <ion-header>
+      <ion-toolbar class="sideMenuToolbar">
+          <ion-title *ngIf="!this.sideMenuIsFolded" class="sideMenuTitle" [innerHTML]="mockObj.title"></ion-title>
+          <div class="metadata-start-wrapper" slot="end">
+            <div *ngIf="!this.sideMenuIsFolded">
+              <ion-icon name="arrow-back" (click)="this.foldSideMenu()"></ion-icon>
+            </div>
+          </div>
+          <div *ngIf="this.sideMenuIsFolded">
+            <ion-icon class="arrowPointsFoward" name="arrow-forward" (click)="this.foldSideMenu()"></ion-icon>
+          </div>
+      </ion-toolbar>
+    </ion-header>
+    <!-- <ion-content class="ion-padding"> -->
+    <ion-content class="menuContent">
+      <div [ngClass]="checkOddEven(pageId) ? 'my-element-grey' : 'my-element' ">
+        <div class= "container_2">
+          <!-- <ion-menu-toggle>
+            <ion-button>Click to close the menu</ion-button>
+          </ion-menu-toggle> -->
+          <ion-menu-toggle *ngIf="!this.sideMenuIsFolded">
+            <div class="options" *ngFor="let entity of mockObj.entities" (click)="goToPage(entity.id, entity.nome, entity.icon, entity.descriptionText)">
+            <!-- <div class="options" *ngFor="let entity of mockObj.entities"> -->
+              <!-- <ion-item class="iconItem">
+                <ion-icon [ngClass]="ionMenuOptionIsSelected(entity.id) ? 'activated' : 'isNotActivated' " name={{entity.icon}}></ion-icon>
+              </ion-item> -->
+              <ion-item color="light">
+                <div class="metadata-start-wrapper" slot="start">
+                  <ion-icon [ngClass]="ionMenuOptionIsSelected(entity.id) ? 'activated' : 'isNotActivated' " name={{entity.icon}}></ion-icon>
+                </div>
+                <ion-label [innerHTML]="entity.nome" [ngClass]="ionMenuOptionIsSelected(entity.id) ? 'activated' : 'isNotActivated' ">
+                  <div></div>
+                </ion-label>      
+                <div class="metadata-end-wrapper" slot="end">
+                  <ion-icon name="chevron-forward-sharp"></ion-icon>
+                </div>
+              </ion-item>
+            </div>
+          </ion-menu-toggle>
+          <div *ngIf="this.sideMenuIsFolded">
+            <div class="options" *ngFor="let entity of mockObj.entities" (click)="goToPage(entity.id, entity.nome, entity.icon, entity.descriptionText)">
+              <ion-item *ngIf="ionMenuOptionIsSelected(entity.id)" color="success">
+                <div class="metadata-start-wrapper" slot="start">
+                  <!-- <ion-icon [ngClass]="ionMenuOptionIsSelected(entity.id) ? 'activated' : 'isNotActivated' " name={{entity.icon}}></ion-icon> -->
+                  <ion-icon class="ionItemActivated" name={{entity.icon}}></ion-icon>
+                </div>
+                <ion-label [innerHTML]="entity.nome">
+                  <div></div>
+                </ion-label>      
+                <div class="metadata-end-wrapper" slot="end">
+                  <ion-icon class="entitiesClass" name="chevron-forward-sharp"></ion-icon>
+                </div>
+              </ion-item>
+              <ion-item *ngIf="!ionMenuOptionIsSelected(entity.id)" color="light">
+                <div class="metadata-start-wrapper" slot="start">
+                  <!-- <ion-icon [ngClass]="ionMenuOptionIsSelected(entity.id) ? 'activated' : 'isNotActivated' " name={{entity.icon}}></ion-icon> -->
+                  <ion-icon class="ionItemIsNotActivated" name={{entity.icon}}></ion-icon>
+                </div>
+                <ion-label [innerHTML]="entity.nome">
+                  <div></div>
+                </ion-label>      
+                <div class="metadata-end-wrapper" slot="end">
+                  <ion-icon name="chevron-forward-sharp"></ion-icon>
+                </div>
+              </ion-item>
+            </div>
+          </div>
+          <div class="menuDivision"></div>
+          <div>
+            <ion-item color="light">
+              <div class="metadata-start-wrapper" slot="start">
+                <ion-icon class="isNotActivated" name="journal-sharp"></ion-icon>
+              </div>
+              <ion-label [innerHTML]="'Project'">
+              </ion-label>
+              <div class="metadata-end-wrapper" slot="end">
+                <ion-icon name="chevron-forward-sharp"></ion-icon>
+              </div>
+            </ion-item>
+            <ion-item color="light">
+              <div class="metadata-start-wrapper" slot="start">
+                <ion-icon class="isNotActivated" name="construct"></ion-icon>
+              </div>
+              <ion-label [innerHTML]="'Settings'">
+              </ion-label>
+              <div class="metadata-end-wrapper" slot="end">
+                <ion-icon name="chevron-forward-sharp"></ion-icon>
+              </div>
+            </ion-item>
+            <ion-item color="light">
+              <div class="metadata-start-wrapper" slot="start">
+                <ion-icon class="isNotActivated" name="log-out"></ion-icon>
+              </div>
+              <ion-label [innerHTML]="'Logout'">
+              </ion-label>
+              <div class="metadata-end-wrapper" slot="end">
+                <ion-icon name="chevron-forward-sharp"></ion-icon>
+              </div>
+            </ion-item>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  </ion-menu>
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+          <!-- <ion-back-button *ngIf="id === '0'" default-href="home"></ion-back-button> -->
+        </ion-buttons>
+        <ion-title [innerHTML]="this.pageName"></ion-title>
+        <ion-buttons *ngIf="this.pageId.length && this.pageIdIsNotTen()" slot="end">
+          <ion-button default-href="home" (click)="setPageValuestoDefault()" [innerHTML]="'Close'"></ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <!-- <ion-content class="ion-padding"> -->
+    <ion-content class="menuContent">
+      <ion-router-outlet></ion-router-outlet>
+    </ion-content>
+  </div>
+</ion-app>
+
+
+<div></div>

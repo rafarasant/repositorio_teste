@@ -1,0 +1,7 @@
+{
+  "name": "primeiroApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

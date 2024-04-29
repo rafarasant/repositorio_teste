@@ -1,0 +1,336 @@
+  <ion-content [fullscreen]="true">
+    <div [ngClass]="checkOddEven(id) ? 'my-element-grey' : 'my-element' ">
+      <div class="container_1">
+        <div class="container_2" *ngIf="nome">
+          <ion-card>
+            <ion-card-header [innerHTML]="nome">
+            </ion-card-header>
+            <ion-card-content [innerHTML]="'Here it is some information about the entity '+ nome + '.'">
+            </ion-card-content>
+          </ion-card>
+        </div>
+  
+        <div class="container_3">
+          <div class="column">
+            <ion-button fill="solid" color="dark" size="small" expand="full" (click)="setOpen(true)" [innerHTML]="nome + ' description'"></ion-button>
+            <ion-modal [isOpen]="isModalOpen">
+              <ng-template>
+                <ion-header>
+                  <ion-toolbar>
+                    <ion-title class="titleName" [innerHTML]="nome + ' description'"></ion-title>
+                    <ion-buttons slot="end">
+                      <ion-button (click)="setOpen(false)" [innerHTML]="'close'"></ion-button>
+                    </ion-buttons>
+                  </ion-toolbar>
+                </ion-header>
+                  <ion-content class="ion-padding">
+                    <div [innerHTML]="descriptionText + ' ' + loremIpsum"></div>
+                  </ion-content>
+              </ng-template>
+            </ion-modal>
+          </div>
+        </div>
+  
+        <div class="line"></div>
+  
+        <div [formGroup]="listPageGroup" class="container_4" *ngIf="id">
+          <div>
+            <!-- Tasks input -->
+            <div *ngIf="id === '0'">
+              <div [innerHTML]="'What is your favourite animal?'"></div>
+                <div>
+                  <form #tasksForm="ngForm" (ngSubmit)="onSubmit()">
+                    <ion-select name="tasks" label="Favourite animal" placeholder="Animal" [(ngModel)]="inputContent">
+                      <ion-select-option value="eagle" [innerHTML]="'Eagle'"></ion-select-option>
+                      <ion-select-option value="jaguar" [innerHTML]="'Jaguar'"></ion-select-option>
+                      <ion-select-option value="hedgehog" [innerHTML]="'Hedgehog'"></ion-select-option>
+                      </ion-select>
+                      <div class="container_5">
+                        <ion-button type="submit" fill="solid" color="dark" size="small" expand="full">Submit</ion-button>
+                      </div>
+                  </form>
+                </div>
+            </div>
+            <!-- Site Activies input -->
+            <div *ngIf="id === '1'">
+              <div [innerHTML]="'What is your favourite fruit?'"></div>
+                <div>
+                  <form #siteActiviesForm="ngForm" (ngSubmit)="onSubmit()">
+                    <ion-select name="siteActivies" label="Favourite fruit" placeholder="Fruit"  [(ngModel)]="inputContent">
+                    <ion-select-option value="apple">Apple</ion-select-option>
+                    <ion-select-option value="banana">Banana</ion-select-option>
+                    <ion-select-option value="orange">Orange</ion-select-option>
+                    </ion-select>
+                    <div class="container_5">
+                      <ion-button type="submit" fill="solid" color="dark" size="small" expand="full">Submit</ion-button>
+                    </div>
+                  </form>
+                </div>
+            </div>
+             <!-- Checklist input-->
+            <div *ngIf="id === '2'">
+              <div [innerHTML]="'Checklist'"></div>
+                <form #itemsForm="ngForm" (ngSubmit)="onSubmit()">
+                  <div>
+                    <ion-list>
+                      <ion-item *ngFor="let item of options.items; let i = index">
+                        <ion-checkbox name="item" justify="start" [innerHTML]="item.itemName" [(ngModel)]="selectedOptions[i]"></ion-checkbox>
+                      </ion-item>
+                    </ion-list>
+                  </div>
+                  <div class="container_5">
+                    <ion-button type="submit" fill="solid" color="dark" size="small" expand="full">Submit</ion-button>
+                  </div>
+                </form>
+            </div>
+            <!-- Equipament input -->
+            <div *ngIf="id === '3'">
+              <div [innerHTML]="'Choose your equipament.'"></div>
+                <br>
+                <form #equipamentForm="ngForm" (ngSubmit)="checkValue($event)">
+                    <ion-list *ngFor="let tool of options.tools let i = index">
+                      <ion-radio-group [allowEmptySelection]="true" [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" value="{{tool.id}}">
+                        <ion-radio name="tool" justify="start" [value]="tool.id" [innerHTML]="tool.toolName"></ion-radio>
+                      </ion-radio-group>
+                    </ion-list>
+                  <div class="container_5">
+                    <ion-button type="submit" fill="solid" color="dark" size="small" expand="full">Submit</ion-button>
+                  </div>
+              </form>
+            </div>
+            <!-- Documents input -->
+            <div *ngIf="id === '4'">
+              <form #emailForm="ngForm" (ngSubmit)="onSubmit()">
+                <ion-input 
+                  type="email"
+                  name="email"
+                  label="Email"
+                  labelPlacement="floating"
+                  fill="solid"
+                  #email="ngModel"
+                  required email
+                  [(ngModel)]="inputContent">
+                </ion-input>
+                <div class="error emailErrorMessage" *ngIf="email.touched">
+                  <div *ngIf="email.errors?.['required']" [innerHTML]="'Email is required'"></div>
+                  <div *ngIf="email.errors?.['email']" [innerHTML]="'Not a valid Email'"></div>
+                </div>
+                <ion-button 
+                  type="submit" 
+                  fill="solid" 
+                  color="dark" 
+                  size="small" 
+                  expand="full"
+                  [disabled]="emailForm.invalid"
+                  [innerHTML]="'Send documents'">
+                </ion-button> 
+                <ion-button 
+                  (click)="takePic()"
+                  type="submit" 
+                  fill="solid" 
+                  color="dark" 
+                  size="small" 
+                  expand="full"
+                  [innerHTML]="'Take a picture'">
+                </ion-button>
+                <div *ngIf="photoService.imagePath">
+                  <img src="{{photoService.imagePath}}" alt="">
+                </div>
+                <ion-button 
+                  (click)="openGalery(true)" 
+                  type="submit" 
+                  fill="solid" 
+                  color="dark" 
+                  size="small" 
+                  expand="full"
+                  [innerHTML]="'Open Photo Galery'">
+                </ion-button> 
+                <ion-modal [isOpen]="isGaleryOpen">
+                  <ng-template>
+                    <ion-header>
+                      <ion-toolbar>
+                        <ion-title class="titleName" [innerHTML]="'Photo Galery'"></ion-title>
+                        <ion-buttons slot="end">
+                          <ion-button (click)="openGalery(false)" [innerHTML]="'close'"></ion-button>
+                        </ion-buttons>
+                      </ion-toolbar>
+                    </ion-header>
+                      <ion-content class="ion-padding">
+                        <form #photosForm="ngForm" (ngSubmit)="photoSelection(photoService.photos)">
+                          
+                          <ion-grid>
+                            <ion-col class="photoGalery" *ngIf="this.loadSourceFolder">
+                              <ion-row class="photo" size="6" *ngFor="let photo of photoService.photos; index as id">
+                                <div class="checkboxImageRow">
+                                  <ion-checkbox class="checkBottom" [(ngModel)]="selectedOptions[id]" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+                                  <ion-img [src]="photo.webviewPath"></ion-img>
+                                </div>
+                              </ion-row>
+                            </ion-col>
+                          </ion-grid>
+                        </form>
+                        <ion-button
+                            type="submit" 
+                            fill="solid" 
+                            color="dark" 
+                            size="small" 
+                            expand="full"
+                            [innerHTML]="'Save photos to another directory'"
+                          (click)="photoSelection(photoService.photos)"
+                          >
+                        </ion-button>
+                        <div class="darkLineContainer">
+                          <div class="darkLine"></div>
+                          <div class="newDirectory" [innerHTML]="'Photos saved to the new directory'"></div>
+                        </div>
+                        <ion-grid>
+                          <ion-col class="photoGalery"  *ngIf="this.loadDestFolder">
+                            <ion-row class="photo" size="6" *ngFor="let newGaleryPhoto of photoService.newGaleryPhotos; index as position">
+                              <div class="checkboxImageRow">
+                                <ion-checkbox class="checkBottom"></ion-checkbox>
+                                <ion-img [src]="newGaleryPhoto.webviewPath"></ion-img>
+                              </div>
+                            </ion-row>
+                          </ion-col>
+                        </ion-grid>
+                      </ion-content>
+                  </ng-template>
+                </ion-modal>                               
+              </form>
+            </div>
+            <!-- Issues input -->
+            <div *ngIf="id === '5'">
+                <ion-textarea
+                  type="text"
+                  id="issue"
+                  class="form-control custom"
+                  [formControl]="issueForm"
+                  required
+                  ionFocus="true"
+                  [counter]="true"
+                  placeholder="Describe the issue.">
+                </ion-textarea>
+                <div class="error issErrorMessage" *ngIf="issueForm.dirty">
+                  <div *ngIf="issueForm.errors?.['required']" [innerHTML]="'Issue description is required.'"></div>
+                  <div *ngIf="issueForm.errors?.['minlength']" [innerHTML]="'Issue description must be at least 4 characters long.'"></div>
+                  <div *ngIf="issueForm.errors?.['maxlength']" [innerHTML]="'Issue description must be at most 100 characters long.'"></div>
+                </div>
+                <ion-button 
+                  type="button" 
+                  fill="solid" 
+                  color="dark" 
+                  size="small" 
+                  expand="full"
+                  (click)="getIssue()"
+                  [disabled]="issueForm.invalid"
+                  [innerHTML]="'Submit'">
+                </ion-button>
+            </div>
+            <div *ngIf="id === '6'">
+                <form #observationForm="ngForm" (ngSubmit)="onSubmit()">
+                    <ion-textarea
+                      name="observations"
+                      #observation="ngModel"
+                      aria-label="Custom textarea"
+                      placeholder="Write an observation."
+                      class="custom"
+                      [counter]="true"
+                      minlength="4"
+                      [maxlength]="300"
+                      appForbiddenName="bob"
+                      [(ngModel)]="inputContent"
+                      required
+                      ></ion-textarea>
+                    <div class="error obsErrorMessage" *ngIf="observation.touched">
+                      <div 
+                        *ngIf="observation.errors?.['required']" 
+                        [innerHTML]="'Observation is required.'">
+                      </div>
+                      <div
+                        *ngIf="observation.errors?.['minlength']" 
+                        [innerHTML]="'Observation must be at least 4 characters long.'">
+                      </div>
+                      <div 
+                        class="alert"
+                        *ngIf="observation.invalid && (observation.dirty || observation.touched)">
+                      </div>
+                    </div>
+                    <ion-button 
+                      type="submit" 
+                      fill="solid" 
+                      color="dark" 
+                      size="small" 
+                      expand="full" 
+                      [disabled]="observationForm.invalid"
+                      [innerHTML]="'Submit'">
+                      </ion-button>
+                </form>
+                <br>
+                <div [innerHTML]="'Observations List'"></div>
+                <br>
+                <div>{{this.retrievedFromLS}}</div>
+                
+            </div>
+            <!-- Functional Tests input -->
+            <div *ngIf="id === '7'">
+              <div [innerHTML]="'Choose a date for the functional test'"></div>
+              <br>
+                <div>
+                  <!-- <ion-datetime ></ion-datetime> -->
+                  <ion-datetime-button class="dateTimeButton" datetime="datetime"></ion-datetime-button>
+  
+                  <ion-modal [keepContentsMounted]="true">
+                    <ng-template>
+                      <ion-datetime id="datetime"></ion-datetime>
+                    </ng-template>
+                  </ion-modal>
+                </div>
+            </div>
+            <!-- Systems input -->
+            <div *ngIf="id === '8'">
+                <form>
+                  <div class="container_5">
+                    <ion-button 
+                      id="open-picker" 
+                      type="submit" 
+                      fill="solid" 
+                      color="dark" 
+                      size="small" 
+                      expand="full" 
+                      [innerHTML]="'Choose the system'">
+                    </ion-button>
+                  </div>
+                  <div class="container_5">
+                    <ion-picker name="systemPicker" class="picker" trigger="open-picker" [columns]="options.systems" [buttons]="options.pickerButtons"></ion-picker>
+                  </div>
+                </form>
+            </div>
+            <!-- Participants input -->
+            <div *ngIf="id === '9'">
+              <div [innerHTML]="'Participants List'"></div>
+                <div>
+                  <ion-list>
+                    <ion-item>
+                      <ion-label [innerHTML]="'Lucas Ribamar'"></ion-label>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label [innerHTML]="'Bojack Horseman'"></ion-label>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label [innerHTML]="'Paulie Walnuts'"></ion-label>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label [innerHTML]="'Mr Peanutbutter'"></ion-label>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label [innerHTML]="'Silvio Dante'"></ion-label>
+                    </ion-item>
+                  </ion-list>
+                </div>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </ion-content>  
+

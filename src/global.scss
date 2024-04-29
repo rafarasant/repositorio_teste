@@ -1,0 +1,148 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+
+// Added CSS code ------------------------------------------------------------------------
+
+ion-searchbar .searchbar-input{
+    padding: 3px !important;
+    height: 35px !important;
+}
+
+ion-searchbar {
+
+    border: 1px solid black;
+
+    .searchbar-input-container {
+
+        display: flex;
+        flex-direction: row;
+
+        input {
+            font-size: 11px !important;
+            text-align: left !important;
+            padding-top: 8px !important;
+            padding-right: 0px;
+            padding-bottom: 3px !important;
+            padding-left: 39px !important;
+            box-shadow: 0px 0px 0px 1px !important;
+            background-color: #ffffff !important;
+            margin-bottom: 20px;
+            border: #373737;
+        }
+
+        ion-icon {
+            height: 18px !important;
+            width: 18px !important;
+            padding-bottom: 3px !important;
+        }
+    }
+
+    // .searchBar {
+    //     border: 1px solid black !important;
+    // }
+}
+
+.picker-prefix, .picker-suffix, .picker-opt.picker-opt-selected {
+    color: #79d382 !important;
+  }
+
+.picker-button.sc-ion-picker-md, .picker-button.ion-activated.sc-ion-picker-md {
+    color: #79d382 !important;
+}
+
+ion-input .input-wrapper.sc-ion-input-md {
+  background-color: #b0a7a700;
+}
+
+ion-input.custom.ios .input-bottom .helper-text,
+ion-input.custom.ios .input-bottom .counter,
+ion-input.custom.md .input-bottom .helper-text,
+ion-input.custom.md .input-bottom .counter {
+  color: #373737;
+}
+
+
+// .abelButtonContainer {
+//     ion-label {
+//         background-color: orange !important;
+//         position: absolute !important;
+//         right: 8px !important;
+//         top: 35px !important;
+//     }
+// }
+
+// .hello {
+//     // flexbox attributes
+//     display: flex !important;
+//     // flex-direction: row !important;
+//     justify-content: center !important;
+//     align-items: center !important;
+//     align-content: center !important;
+//     flex-wrap: nowrap;
+
+//     // other class attributes
+//     height: 25px;
+//     width: max-content;
+//     border-radius: 4px;
+//     background-color: #ff8801 !important;
+//     color: white;
+//     position: absolute !important;
+//     right: 60px !important;
+//     top: 30px !important;
+//     font-size: 15px;
+//     padding: 5px;
+// }
+
+// .fabCol {
+//     //  // flexbox attributes
+//      display: flex !important;
+//      flex-direction: column !important;
+//      justify-content: center !important;
+//      align-items: center !important;
+//      align-content: center !important;
+
+//     //  // other class attributes
+//     //  position: absolute !important;
+//     //  right: -10px !important;
+
+//     position: absolute !important;
+//     bottom: -4px !important;
+//     right: 0px !important;
+// }
+
+// .fabRow {
+//     //  // flexbox attributes
+//     display: flex !important;
+//     flex-direction: row !important;
+//     justify-content: center !important;
+//     align-items: center !important;
+//     align-content: center !important;
+
+//     height: 15px;
+//     margin: 20px;
+// }
